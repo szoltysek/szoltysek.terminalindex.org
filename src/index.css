@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #fbf1c7;
+  --text-color: #3c3836;
+  --secondary-color: #7c6f64;
+  --code-bg: #ebdbb2;
+  --border-color: #d5c4a1;
+  --primary-color: #504945;
+
+  --shadow-light: rgba(255, 255, 255, 0.3);
+  --shadow-dark: rgba(60, 56, 54, 0.4);
+
+  --glass-bg: rgba(251, 241, 199, 0.3);
+  --glass-border: rgba(80, 73, 69, 0.15);
+
+  --code-text: #3c3836;
+  --code-comment: #7c6f64;
+}
+
+.dark {
+  --bg-color: #504945;
+  --text-color: #ebdbb2;
+  --secondary-color: #a89984;
+  --code-bg: #3c3836;
+  --border-color: #7c6f64;
+  --primary-color: #d5c4a1;
+
+  --shadow-light: rgba(235, 219, 178, 0.05);
+  --shadow-dark: rgba(29, 32, 33, 0.5);
+
+  --glass-bg: rgba(80, 73, 69, 0.3);
+  --glass-border: rgba(235, 219, 178, 0.15);
+
+  --code-text: #ebdbb2;
+  --code-comment: #a89984;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.skeuo-panel {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  box-shadow:
+    6px 6px 12px var(--shadow-dark),
+    -6px -6px 12px var(--shadow-light);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.skeuo-button {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  box-shadow:
+    4px 4px 8px var(--shadow-dark),
+    -4px -4px 8px var(--shadow-light);
+  border-radius: 10px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.skeuo-button:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    5px 5px 10px var(--shadow-dark),
+    -5px -5px 10px var(--shadow-light);
+}
+
+.skeuo-button:active {
+  transform: translateY(1px);
+  box-shadow:
+    inset 3px 3px 6px var(--shadow-dark),
+    inset -3px -3px 6px var(--shadow-light);
+}
+
+.skeuo-inset {
+  background: var(--code-bg);
+  border: 1px solid var(--border-color);
+  box-shadow:
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.liquid-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 var(--shadow-dark);
+  border-radius: 24px;
+  transition: all 0.3s ease;
+}
+
+.footer-inverted {
+  background-color: var(--text-color) !important;
+  color: var(--bg-color) !important;
+  border-top: 3px solid var(--bg-color);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+.footer-inverted .opacity-50 {
+  color: var(--bg-color);
+  opacity: 0.7;
+}
+
+.footer-inverted .border-t-2,
+.footer-inverted .border-b-2,
+.footer-inverted .border-l-2,
+.footer-inverted .border-r-2,
+.footer-inverted .border-b {
+  border-color: var(--bg-color) !important;
+  opacity: 0.3;
+}
+
+.footer-inverted .blueprint-bg,
+.footer-inverted .blueprint-bg-sm {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(3vw, -5vh) scale(1.05);
+  }
+
+  66% {
+    transform: translate(-2vw, 3vh) scale(0.95);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.animate-float {
+  animation: float 15s infinite ease-in-out alternate;
+}
+
+.animate-float-delayed {
+  animation: float 18s infinite ease-in-out alternate-reverse;
+  animation-delay: -5s;
+}
+
+.animate-float-slow {
+  animation: float 20s infinite ease-in-out alternate;
+  animation-delay: -2s;
+}
+
+.blueprint-bg {
+  background-image:
+    linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.blueprint-bg-sm {
+  background-image:
+    linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+.crt-screen {
+  background: #1d2021;
+  color: #a89984;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-screen::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 2;
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+}
+
+.tape {
+  position: absolute;
+  width: 120px;
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+  transform: rotate(-2deg);
+  z-index: 10;
+  border-left: 2px dashed rgba(0, 0, 0, 0.05);
+  border-right: 2px dashed rgba(0, 0, 0, 0.05);
+}
+
+.dark .tape {
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
